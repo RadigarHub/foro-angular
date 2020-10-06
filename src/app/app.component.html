@@ -13,12 +13,15 @@
           <a class="nav-link" [routerLink]="['/inicio']">Inicio <span class="sr-only">(current)</span></a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="#">Ver temas</a>
+          <a class="nav-link" href="#">Temas</a>
         </li>
-        <li class="nav-item mr-2">
+        <li class="nav-item" *ngIf="identity">
           <a class="nav-link" href="#">Crear temas</a>
         </li>
         <li class="nav-item">
+          <a class="nav-link" href="#">Compañeros</a>
+        </li>
+        <li class="nav-item ml-2">
           <form class="form-inline my-2 my-lg-0">
             <input class="form-control mr-sm-2" type="search" placeholder="¿Qué estás buscando?" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
@@ -27,13 +30,13 @@
       </ul>
       
       <ul class="navbar-nav navbar-right">
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!identity">
           <a class="nav-link" [routerLink]="['/registro']">Regístrate</a>
         </li>
-        <li class="nav-item">
+        <li class="nav-item" *ngIf="!identity">
           <a class="nav-link"[routerLink]="['/login']">Login</a>
         </li>
-        <li class="nav-item dropdown">
+        <li class="nav-item dropdown" *ngIf="identity">
           <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
             {{identity.name + ' ' + identity.surname}}
           </a>
