@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { User } from '../../models/user';
 
 @Component({
   selector: 'register',
@@ -7,7 +8,13 @@ import { Component, OnInit } from '@angular/core';
 })
 export class RegisterComponent implements OnInit {
 
-  constructor() { }
+  public page_title: string;
+  public user: User;
+
+  constructor() {
+    this.page_title = "Regístrate";
+    this.user = new User('', '', '', '', '', '', 'ROLE_USER');
+  }
 
   ngOnInit(): void {
   }
