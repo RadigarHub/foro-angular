@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute, Params } from '@angular/router';
 import { User } from '../../models/user';
 import { UserService } from '../../services/user.services';
 
@@ -13,11 +14,13 @@ export class LoginComponent implements OnInit {
   public page_title: string;
   public user: User;
   public status: string;
-  public identity;
-  public token;
+  public identity: Object;
+  public token: string;
 
   constructor(
-    private _userService: UserService
+    private _userService: UserService,
+    private _router: Router,
+    private _route: ActivatedRoute
   ) {
     this.page_title = 'Identifícate';
     this.user = new User('', '', '', '', '', '', 'ROLE_USER');
@@ -31,15 +34,22 @@ export class LoginComponent implements OnInit {
     this._userService.signup(this.user).subscribe(
       response => {
         if (response.user && response.user._id) {
-          // Guardamos el usuario en una propiedad
+          // Guardamos el usuario en una propiedad y en el localStorage del navegador web
           this.identity = response.user;
+          localStorage.setItem('identity', JSON.stringify(this.identity));
 
           // Conseguir el token del usuario identificado
           this._userService.signup(this.user, true).subscribe(
             response => {
               if (response.token) {
-                // Guardamos el token en una propiedad
+                // Guardamos el token en una propiedad y en el localStorage del navegador web
                 this.token = response.token;
+                localStorage.setItem('token', this.token);
+                this.status = 'success';
+
+                // Redirigimos a la página de inicio
+                this._router.navigate(['/inicio']);
+
               } else {
                 this.status = 'error';
               }
