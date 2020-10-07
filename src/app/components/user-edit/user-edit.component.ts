@@ -19,6 +19,7 @@ export class UserEditComponent implements OnInit {
   public status: string;
   public url: string;
   public afuConfig;
+  public resetVar: boolean;
 
   constructor(
     private _router: Router,
@@ -46,8 +47,18 @@ export class UserEditComponent implements OnInit {
       hideProgressBar: false,
       hideResetBtn: true,
       hideSelectBtn: false,
-      attachPinText: "Sube tu foto"
+      replaceTexts: {
+        selectFileBtn: 'Select Files',
+        resetBtn: 'Reset',
+        uploadBtn: 'Upload',
+        dragNDropBox: 'Drag N Drop',
+        attachPinBtn: 'Sube tu foto...',
+        afterUploadMsg_success: 'Successfully Uploaded !',
+        afterUploadMsg_error: 'Upload Failed !',
+        sizeLimit: 'Size Limit'
+      }
     };
+    this.resetVar = true;
   }
 
   ngOnInit(): void {
