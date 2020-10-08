@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { Topic } from '../../../models/topic';
-import { UserService } from '../../../services/user.services';
+import { UserService } from '../../../services/user.service';
 
 @Component({
   selector: 'app-add',
