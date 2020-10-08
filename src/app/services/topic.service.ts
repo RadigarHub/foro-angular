@@ -17,4 +17,12 @@ export class TopicService {
   prueba() {
     return "hola mundo desde el topic service";
   }
+
+  addTopic(token, topic): Observable<any> {
+    let params = JSON.stringify(topic);
+    let headers = new HttpHeaders().set('Content-Type', 'application/json')
+                                   .set('Authorization', token);
+    
+    return this._http.post(this.url + 'topic', params, {headers: headers});
+  }
 }
