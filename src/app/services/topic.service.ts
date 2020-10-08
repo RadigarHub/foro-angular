@@ -27,7 +27,11 @@ export class TopicService {
   }
 
   getTopicsByUser(userId): Observable<any> {
-    let headers = new HttpHeaders().set('Content-Type', 'application/json');
+    let headers = new HttpHeaders().set('Content-Type', 'application/json'); // Aquí es opcional pasarle esta cabecera, ya que no se le está mandando ningún parámetro
     return this._http.get(this.url + 'user-topics/' + userId, {headers: headers});
+  }
+
+  getTopic(id): Observable<any> {
+    return this._http.get(this.url + 'topic/' + id);
   }
 }
