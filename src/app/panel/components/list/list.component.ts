@@ -30,6 +30,25 @@ export class ListComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getTopics();
+  }
+
+  getTopics() {
+    var userId = this.identity._id;
+    this._topicService.getTopicsByUser(userId).subscribe(
+      response => {
+        if (response.topics) {
+          this.status = "success";
+          this.topics = response.topics;
+        } else {
+          this.status = "error";
+        }
+      },
+      error => {
+        console.log(error);
+        this.status = "error";
+      }
+    );
   }
 
 }
