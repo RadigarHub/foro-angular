@@ -27,6 +27,25 @@ export class TopicsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.getTopics(1);
+  }
+
+  getTopics(page = 1) {
+    this._topicService.getTopics(page).subscribe(
+      response => {
+        if (response.topics) {
+          this.topics = response.topics;
+
+          // Navegación de paginación
+          
+        } else {
+          this._router.navigate(['/inicio']);
+        }
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }
