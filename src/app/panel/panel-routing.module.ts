@@ -3,9 +3,9 @@ import { RouterModule, Routes } from '@angular/router';
 
 // Componentes
 import { MainComponent } from './components/main/main.component';
+import { ListComponent } from './components/list/list.component';
 import { AddComponent } from './components/add/add.component';
 import { EditComponent } from './components/edit/edit.component';
-import { ListComponent } from './components/list/list.component';
 
 const panelRoutes: Routes = [
   {
@@ -28,5 +28,4 @@ const panelRoutes: Routes = [
     RouterModule
   ]
 })
-
 export class PanelRoutingModule { }
