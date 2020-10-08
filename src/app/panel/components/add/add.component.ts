@@ -17,6 +17,7 @@ export class AddComponent implements OnInit {
   public identity;
   public token: string;
   public status: string;
+  public is_edit: boolean;
 
   constructor(
     private _route: ActivatedRoute,
@@ -28,6 +29,7 @@ export class AddComponent implements OnInit {
     this.identity = this._userService.getIdentity();
     this.token = this._userService.getToken();
     this.topic = new Topic('', '', '', '', '', '', this.identity._id, null);
+    this.is_edit = false;
   }
 
   ngOnInit(): void {
@@ -38,7 +40,6 @@ export class AddComponent implements OnInit {
     this._topicService.addTopic(this.token, this.topic).subscribe(
       response => {
         if (response.topic) {
-          this.status = "success";
           this.topic = response.topic;
           this._router.navigate(['/panel']);
         } else {
