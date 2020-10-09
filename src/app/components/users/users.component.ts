@@ -11,12 +11,14 @@ import { global } from '../../services/global';
 })
 export class UsersComponent implements OnInit {
 
+  public page_title: string;
   public users: User[];
   public url: string;
 
   constructor(
     private _userService: UserService
   ) {
+    this.page_title = "Compañeros";
     this.url = global.url;
   }
 
