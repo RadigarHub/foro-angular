@@ -17,4 +17,17 @@
       <ngx-highlight-js lang="{{topic.lang}}" code="{{topic.code}}"></ngx-highlight-js>
     </p>
   </div>
+  <div class="clearfix"></div>
+  <div id="comment-box" class="col-lg-9 mt-2">
+    <h3>Comentarios</h3>
+    <hr>
+    <form (ngSubmit)="onSubmit()" #formComment="ngForm" *ngIf="identity">
+      <div class="form-group">
+        <label for="content">Añade tu comentario</label>
+        <textarea name="content" #content="ngModel" [(ngModel)]="comment.content" required class="form-control"></textarea>
+        <small *ngIf="!content.valid && content.touched" class="invalid-feedback d-block">El comentario no es válido</small>
+      </div>
+      <input type="submit" value="Comentar" class="btn btn-success" [disabled]="formComment.invalid">
+    </form>
+  </div>
 </div>
