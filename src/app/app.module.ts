@@ -5,6 +5,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { routing, appRoutingProviders } from './app.routing';
 import { AngularFileUploaderModule } from "angular-file-uploader";
 import { MomentModule } from 'angular2-moment';
+import { NgxHighlightJsModule } from '@nowzoo/ngx-highlight-js';
 
 import { PanelModule } from './panel/panel.module';
 
@@ -33,7 +34,8 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
     routing,
     AngularFileUploaderModule,
     PanelModule,
-    MomentModule
+    MomentModule,
+    NgxHighlightJsModule.forRoot()
   ],
   providers: [
     appRoutingProviders

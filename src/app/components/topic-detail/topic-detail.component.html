@@ -1,5 +1,5 @@
 <div class="col-lg-12 mt-3 topic-box">
-  <div class="topic-data col-lg-7 float-left">
+  <div class="topic-data col-lg-9 float-left">
     <h1>{{topic.title}}</h1>
     <span class="badge badge-warning mr-2" *ngIf="topic.lang">
       {{topic.lang}}
@@ -13,8 +13,8 @@
     <p id="topic-content" class="mt-2">
       {{topic.content}}
     </p>
-    <p id="topic-code" class="mt-2" *ngIf="topic.code">
-      {{topic.code}}
+    <p id="topic-code" class="mt-2" *ngIf="topic.code && topic.lang">
+      <ngx-highlight-js lang="{{topic.lang}}" code="{{topic.code}}"></ngx-highlight-js>
     </p>
   </div>
 </div>
