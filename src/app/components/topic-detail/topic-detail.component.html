@@ -18,6 +18,7 @@
     </p>
   </div>
   <div class="clearfix"></div>
+
   <div id="comment-box" class="col-lg-9 mt-2">
     <h3>Comentarios</h3>
     <hr>
@@ -35,5 +36,19 @@
       </div>
       <input type="submit" value="Comentar" class="btn btn-success" [disabled]="formComment.invalid">
     </form>
+    <hr>
+
+    <ul class="list-group list-comments mb-5">
+      <li class="list-group-item comment-item" *ngFor="let comment of topic.comments">
+        <span class="badge badge-primary">
+          {{comment.user.name + ' ' + comment.user.surname}}
+        </span>
+        <span class="badge badge-light ml-2">
+          {{comment.date | amLocale: 'es' | amTimeAgo}}
+        </span>
+        <div class="clearfix"></div>
+        {{comment.content}}
+      </li>
+    </ul>
   </div>
 </div>
