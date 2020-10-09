@@ -20,14 +20,13 @@ export class SearchComponent implements OnInit {
     private _router: Router,
     private _topicService: TopicService
   ) {
-    this.page_title = "Buscar: ";
     this.no_paginate = true;
   }
 
   ngOnInit(): void {
     this._route.params.subscribe((params: Params) => {
       var search = params['search'];
-      this.page_title = this.page_title + search;
+      this.page_title = "Buscar: " + search;
       this.getTopics(search);
     });
   }
