@@ -13,6 +13,8 @@ import { AddComponent } from './components/add/add.component';
 import { EditComponent } from './components/edit/edit.component';
 
 // Servicios
+import { UserService } from '../services/user.service';
+import { UserGuard } from '../services/user.guard';
 
 // NgModule
 @NgModule({
@@ -35,6 +37,9 @@ import { EditComponent } from './components/edit/edit.component';
     AddComponent,
     EditComponent
   ],
-  providers: []
+  providers: [
+    UserService,
+    UserGuard
+  ]
 })
 export class PanelModule { }
