@@ -2,6 +2,8 @@
 import { ModuleWithProviders } from '@angular/core';
 import { Routes, RouterModule, Route } from '@angular/router';
 import { UserGuard } from './services/user.guard';
+import { NoIdentityGuard } from './services/no.identity.guard';
+
 
 // Importar componentes
 import { HomeComponent } from './components/home/home.component';
@@ -15,8 +17,8 @@ import { TopicDetailComponent } from './components/topic-detail/topic-detail.com
 const appRoutes: Routes = [
   { path: '', component: HomeComponent },
   { path: 'inicio', component: HomeComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'registro', component: RegisterComponent },
+  { path: 'login', canActivate: [NoIdentityGuard], component: LoginComponent },
+  { path: 'registro', canActivate: [NoIdentityGuard], component: RegisterComponent },
   { path: 'ajustes', canActivate: [UserGuard], component: UserEditComponent},
   { path: 'temas', component: TopicsComponent },
   { path: 'temas/:page', component: TopicsComponent },
