@@ -21,7 +21,7 @@
   </ul>
   <div class="clearfix"></div>
   <!-- Navegación de la paginación -->
-  <ul class="pagination mt-4">
+  <ul class="pagination mt-4" *ngIf="!no_paginate">
     <li class="page-item">
       <a class="page-link" [routerLink]="['/temas', prev_page]">&laquo;</a>
     </li>
