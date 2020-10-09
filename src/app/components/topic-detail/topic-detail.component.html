@@ -1,4 +1,4 @@
-<div class="col-lg-12 mt-3 topic-box">
+<div class="col-lg-12 mt-3 topic-box" *ngIf="topic">
   <div class="topic-data col-lg-9 float-left">
     <h1>{{topic.title}}</h1>
     <span class="badge badge-warning mr-2" *ngIf="topic.lang">
@@ -21,7 +21,13 @@
   <div id="comment-box" class="col-lg-9 mt-2">
     <h3>Comentarios</h3>
     <hr>
-    <form (ngSubmit)="onSubmit()" #formComment="ngForm" *ngIf="identity">
+    <div class="alert alert-success mt-3" *ngIf="status == 'success'">
+      El comentario se ha añadido correctamente
+    </div>
+    <div class="alert alert-danger mt-3" *ngIf="status == 'error'">
+      El comentario no se ha podido añadir
+    </div>
+    <form (ngSubmit)="onSubmit(formComment)" #formComment="ngForm" *ngIf="identity">
       <div class="form-group">
         <label for="content">Añade tu comentario</label>
         <textarea name="content" #content="ngModel" [(ngModel)]="comment.content" required class="form-control"></textarea>
